@@ -1,0 +1,29 @@
+{
+  "name": "hyperion-ng-api",
+  "version": "0.0.1",
+  "description": "a hyperion.ng connector",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b1rdhous3/hyperion-ng-api.git"
+  },
+  "keywords": [
+    "hyperion",
+    "hyperion.ng",
+    "iot",
+    "tvlight"
+  ],
+  "author": "Jan-Philipp Fischer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/b1rdhous3/hyperion-ng-api/issues"
+  },
+  "homepage": "https://github.com/b1rdhous3/hyperion-ng-api#readme",
+  "dependencies": {
+    "net": "^1.0.2",
+    "websocket": "^1.0.26"
+  }
+}
