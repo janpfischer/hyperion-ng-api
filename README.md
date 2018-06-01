@@ -1,6 +1,6 @@
 # Hyperion NG Api
 
-This is a early version. Still to do a lot. Testing, documentation and implementing more functionality.
+This is an early version. Still to do a lot. Testing, documentation and implementing more functionality.
 
 ### Installation
 [![npm version](https://badge.fury.io/js/hyperion-ng-api.svg)](https://badge.fury.io/js/hyperion-ng-api)

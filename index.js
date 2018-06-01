@@ -328,7 +328,7 @@ class HyperionNg {
    * @param  {string}   msg
    * @param  {number}   wsTan
    * @param  {Function} callback
-   * @return {Function} callback return string from hyperion.ng        
+   * @return {Function} callback return string from hyperion.ng
    */
   sendToHyperion(command, subcommand, msg, wsTan, callback) {
     const client = new WebSocketClient();
@@ -340,7 +340,6 @@ class HyperionNg {
     });
 
     client.on('connect', function(connection) {
-      //console.log('WebSocket Client Connected');
       connection.on('error', function(error) {
         callback(error, null);
       });
