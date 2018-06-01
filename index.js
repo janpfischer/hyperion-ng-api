@@ -143,12 +143,22 @@ class HyperionNg {
     });
   }
 
+  /**
+   * getServerConfig: Gets the current config file
+   * @param  {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   getServerConfig(callback) {
     this.sendToHyperion("config", "getconfig", "", this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
+  /**
+   * getServerConfigSchema: Gets the current config schema
+   * @param  {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   getServerConfigSchema(callback) {
     this.sendToHyperion("config", "getschema", "", this.wsTan, function(err, data) {
       callback(err, data);
@@ -189,6 +199,13 @@ class HyperionNg {
     });
   }
 
+  /**
+   * setComponentState: Sets a component to true or false
+   * @param {string}   comp     The component. You can use getAllComponents to get the names.
+   * @param {boolean}   state    true or false
+   * @param {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   setComponentState(comp, state, callback) {
     var state_str = state ? "true" : "false";
     this.sendToHyperion("componentstate", "", '"componentstate":{"component":"' + comp + '","state":' + state_str + '}', this.wsTan, function(err, data) {
@@ -196,66 +213,123 @@ class HyperionNg {
     });
   }
 
+  /**
+   * setColor: Sets the color for a given priority and duration
+   * @param {number}   r
+   * @param {number}   g
+   * @param {number}   b
+   * @param {number}   duration in seconds. Use 0 for infinite
+   * @param {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   setColor(r, g, b, duration, callback) {
     this.sendToHyperion("color", "", '"color":[' + r + ',' + g + ',' + b + '], "priority":' + this.priority + ',"duration":' + duration * 1000 + ',"origin":"' + this.origin + '"', this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
+  /**
+   * setColorToBlackPermanently: Sets the color to black with duration 0
+   * @param {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   setColorToBlackPermanently(callback) {
     this.sendToHyperion("color", "", '"color":[0,0,0], "priority":' + this.priority + ',"duration":0,"origin":"' + this.origin + '"', this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
+  /**
+  * setEffect: Sets an effect.
+  * @param {string}   effectName You can use getAllEffects to get the name
+  * @param {number}   duration   in seconds. Use 0 for infinite
+  * @param {Function} callback
+  * @return {Function} callback return string from hyperion.ng
+  */
   setEffect(effectName, duration, callback) {
     this.sendToHyperion("effect", "", '"effect":{"name":"' + effectName + '"},"priority":' + this.priority + ',"duration":' + duration * 1000 + ',"origin":"' + this.origin + '"', this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
+  /**
+   * setBrightness: Set the led brightness
+   * @param {number}   value    0 to 100
+   * @param {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   setBrightness(value, callback) {
     this.sendToHyperion("adjustment", "", '"adjustment": {"brightness": ' + value + '}', this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
+  /**
+   * setSourceToAutoSelection: Activates autoselection
+   * @param {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   setSourceToAutoSelection(callback) {
     this.sendToHyperion("sourceselect", "", '"auto":true', this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
+  /**
+   * setSource: set a source (priority) to active
+   * @param {number}   priority You can use getAllPriorities to get the id
+   * @param {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   setSource(priority, callback) {
     this.sendToHyperion("sourceselect", "", '"priority":' + priority, this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
+  /**
+   * clearPriority: clears the given priority
+   * @param  {number}   priority You can use getAllPriorities to get the id
+   * @param  {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   clearPriority(priority, callback) {
     this.sendToHyperion("clear", "", '"priority":' + priority + '', this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
-  clearPriority(priority, callback) {
-    this.sendToHyperion("clear", "", '"priority":' + priority + '', this.wsTan, function(err, data) {
-      callback(err, data);
-    });
-  }
-
+  /**
+   * clearApiPriority: clears the priority which is used by this api
+   * @param  {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   clearApiPriority(callback) {
     this.sendToHyperion("clear", "", '"priority":' + this.priority + '', this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
+  /**
+   * clearAllPriority: clears all priority
+   * @param  {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   clearAllPriority(callback) {
     this.sendToHyperion("clearall", "", "", this.wsTan, function(err, data) {
       callback(err, data);
     });
   }
 
+  /**
+   * sendToHyperion: Main function to communicate with hyperion.ng. This function is calles by the other functions. If you know the commands you want to call on hyperion side you can call this function directly.
+   * @param  {string}   command
+   * @param  {string}   subcommand
+   * @param  {string}   msg
+   * @param  {number}   wsTan
+   * @param  {Function} callback
+   * @return {Function} callback return string from hyperion.ng        
+   */
   sendToHyperion(command, subcommand, msg, wsTan, callback) {
     const client = new WebSocketClient();
     client.connect('ws://' + this.host + ':' + this.port + '/');
