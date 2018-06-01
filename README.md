@@ -1,6 +1,26 @@
 # Hyperion NG Api
 
-### Table of Contents
+This is a early version. Still to do a lot. Testing, documentation and implementing more functionality.
+
+### Installation
+```sh
+$ npm install --save hyperion-ng-api
+```
+
+### Usage
+```
+const HyperionNg = require('hyperion-ng-api');
+
+//Host, Port, WsTan, Priority (Use 1 if you want to overwrite WebUI priority. Remember WebUI is always priority 1.)
+hyperion = new HyperionNg('192.168.178.23', 19444, 666, 1);
+
+hyperion.getServerInfo(function (err, data){
+  (err) ? console.log(err) : console.log(data);
+})
+```
+
+
+### Documentation (not complete)
 
 -   [disableHyperion][1]
 -   [enableHyperion][2]
