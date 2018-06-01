@@ -1,6 +1,6 @@
 {
   "name": "hyperion-ng-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a hyperion.ng connector",
   "main": "index.js",
   "scripts": {
