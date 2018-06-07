@@ -88,6 +88,12 @@ class HyperionNg {
     });
   }
 
+  getStartupEffect(callback) {
+    this.getServerConfig(function(err, data) {
+      callback(err, data.result.foregroundEffect);
+    });
+  }
+
   /**
    * getAllGrabbers: Get all Grabbers. Wrap function for getServerInfo
    * @param  {Function} callback
@@ -318,6 +324,16 @@ class HyperionNg {
   clearAllPriority(callback) {
     this.sendToHyperion("clearall", "", "", this.wsTan, function(err, data) {
       callback(err, data);
+    });
+  }
+
+  playStatupEffect(callback) {
+    var obj = this;
+    obj.getStartupEffect(function(err, data) {
+      let duration_s = data.duration_ms/1000;
+      obj.setEffect(data.effect, data.duration_ms/1000, function(err, data) {
+        callback(err, data);
+      });
     });
   }
 
