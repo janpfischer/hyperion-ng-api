@@ -330,7 +330,6 @@ class HyperionNg {
   playStatupEffect(callback) {
     var obj = this;
     obj.getStartupEffect(function(err, data) {
-      let duration_s = data.duration_ms/1000;
       obj.setEffect(data.effect, data.duration_ms/1000, function(err, data) {
         callback(err, data);
       });
