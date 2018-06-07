@@ -88,6 +88,11 @@ class HyperionNg {
     });
   }
 
+  /**
+   * getStartupEffect: Gets the effect which is used for startup
+   * @param  {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   getStartupEffect(callback) {
     this.getServerConfig(function(err, data) {
       callback(err, data.result.foregroundEffect);
@@ -327,6 +332,11 @@ class HyperionNg {
     });
   }
 
+  /**
+   * playStatupEffect: plays the startup effect with configured time
+   * @param  {Function} callback
+   * @return {Function} callback return string from hyperion.ng
+   */
   playStatupEffect(callback) {
     var obj = this;
     obj.getStartupEffect(function(err, data) {
