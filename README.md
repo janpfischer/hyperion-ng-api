@@ -1,5 +1,7 @@
 # Hyperion NG Api
 
+#WARNING: PACKAGE IS NOT SUPPORTED ANYMORE. 
+
 This is an early version. Still to do a lot. Testing, documentation and implementing more functionality.
 
 ### Installation
